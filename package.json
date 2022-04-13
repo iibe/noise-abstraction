@@ -1,0 +1,40 @@
+{
+  "name": "noise-abstraction",
+  "version": "1.0.0",
+  "description": "Noise abstraction HTML5 canvas animation",
+  "main": "dist/index.js",
+  "private": true,
+  "scripts": {
+    "start": "npm run husky:pre-commit",
+    "build": "tsc src/index.ts",
+    "watch": "tsc -w src/index.ts",
+    "bundle": "webpack",
+    "lint": "npx prettier --check .",
+    "lint:fix": "npx prettier --write ."
+  },
+  "keywords": [
+    "canvas",
+    "animation",
+    "request-animation-frame",
+    "perlan-noise",
+    "simplex-noise",
+    "game-loop"
+  ],
+  "author": "Roman Narvatov <kjiibe@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dat.gui": "^0.7.9",
+    "simplex-noise": "^3.0.1",
+    "webpack": "^5.72.0"
+  },
+  "devDependencies": {
+    "@types/dat.gui": "^0.7.7",
+    "@types/webpack": "^5.28.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.2",
+    "ts-loader": "^9.2.8",
+    "typescript": "^4.6.3",
+    "webpack-cli": "^4.9.2"
+  }
+}
