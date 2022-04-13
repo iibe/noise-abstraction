@@ -56,7 +56,7 @@ rerender();
 
 /** Set canvas properties on window resize */
 function setCanvasProps(event?: UIEvent): void {
-  event && event.preventDefault();
+  event ?? event.preventDefault();
 
   screenW = canvas.width = window.innerWidth;
   screenH = canvas.height = window.innerHeight;

@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run lint:fix && npm run bundle && git add -A . && git subtree push --prefix dist origin gh-pages
