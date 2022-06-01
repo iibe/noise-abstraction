@@ -3,10 +3,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 /** @type { import("webpack").Configuration } */
 module.exports = {
-  target: "web",
   mode: "production",
+  target: "web",
   entry: path.resolve(__dirname, "./src/index.ts"),
   output: {
+    path: path.resolve(__dirname, "./dist"),
     filename: "index.js",
     clean: true,
   },

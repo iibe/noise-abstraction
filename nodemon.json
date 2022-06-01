@@ -1,0 +1,5 @@
+{
+  "$schema": "https://json.schemastore.org/nodemon",
+  "exec": "npm run bundle",
+  "watch": ["src/**/.{html,ts}"]
+}

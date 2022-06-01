@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "private": true,
   "scripts": {
-    "start": "npm run husky:pre-commit",
+    "start": "nodemon",
     "build": "tsc src/index.ts",
     "watch": "tsc -w src/index.ts",
-    "bundle": "webpack",
+    "bundle": "npx webpack",
     "lint": "npx prettier --check .",
     "lint:fix": "npx prettier --write .",
     "prepare": "husky install"

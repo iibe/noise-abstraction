@@ -1,5 +1,5 @@
-import config from "./config";
 import Particle from "./class/particle";
+import config from "./config";
 import getNoise3D from "./function/getNoise3D";
 
 /** Constants */
@@ -11,35 +11,28 @@ let screenW: number, screenH: number;
 let centerX: number, centerY: number;
 let hueBase: number = 0;
 let zOffset: number = 0;
-let isPause: boolean;
+
+let $frames: number = 0;
 
 /** Functions */
-const usePause: () => void = ((prev?: NodeJS.Timeout) => {
-  return () => {
-    if (prev) {
-      clearTimeout(prev);
-    }
-
-    isPause = false;
-
-    prev = setTimeout(() => {
-      isPause = true;
-    }, config.stop);
-  };
-})();
+const newScene = (): void => {
+  $frames = 0;
+};
 
 /** Bootstrap */
 window.onresize = (event: UIEvent) => {
-  setCanvasProps(event);
+  event.preventDefault();
+
+  setCanvasProps();
 
   // if animiation was stopped
   // then update pause timer and call render loop again
   // else just update pause timer
-  if (isPause) {
-    usePause();
+  if ($frames > config.frameLimit) {
+    newScene();
     rerender();
   } else {
-    usePause();
+    newScene();
   }
 };
 
@@ -51,13 +44,11 @@ for (let i = 0; i < config.particles; i++) {
   setParticle(particles[i]);
 }
 
-usePause();
+newScene();
 rerender();
 
 /** Set canvas properties on window resize */
-function setCanvasProps(event?: UIEvent): void {
-  event ?? event.preventDefault();
-
+function setCanvasProps(): void {
   screenW = canvas.width = window.innerWidth;
   screenH = canvas.height = window.innerHeight;
 
@@ -83,9 +74,12 @@ function setParticle(p: Particle): void {
 
 /** Update function */
 function rerender(): void {
-  if (isPause) {
+  if ($frames > config.frameLimit) {
+    $frames = 0;
     return void 0;
   }
+
+  $frames++;
 
   for (let i = 0; i < config.particles; i++) {
     const p: Particle = particles[i];
