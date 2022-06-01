@@ -20,9 +20,7 @@ const newScene = (): void => {
 };
 
 /** Bootstrap */
-window.onresize = (event: UIEvent) => {
-  event.preventDefault();
-
+window.onresize = () => {
   setCanvasProps();
 
   // if animiation was stopped
