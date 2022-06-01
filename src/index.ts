@@ -1,6 +1,7 @@
 import Particle from "./class/particle";
 import config from "./config";
 import getNoise3D from "./function/getNoise3D";
+import getRange from "./function/getRange";
 
 /** Constants */
 const canvas = <HTMLCanvasElement>document.getElementById("canvas");
@@ -12,6 +13,7 @@ let centerX: number, centerY: number;
 let hueBase: number = 0;
 let zOffset: number = 0;
 
+let $border: number = getRange(...config.frameLimit);
 let $frames: number = 0;
 
 /** Functions */
@@ -24,9 +26,9 @@ window.onresize = () => {
   setCanvasProps();
 
   // if animiation was stopped
-  // then update pause timer and call render loop again
-  // else just update pause timer
-  if ($frames > config.frameLimit) {
+  // then update frame counter and call render loop again
+  // else just update frame counter
+  if ($frames > $border) {
     newScene();
     rerender();
   } else {
@@ -72,7 +74,7 @@ function setParticle(p: Particle): void {
 
 /** Update function */
 function rerender(): void {
-  if ($frames > config.frameLimit) {
+  if ($frames > $border) {
     return void 0;
   }
 

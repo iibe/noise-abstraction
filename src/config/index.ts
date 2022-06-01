@@ -16,9 +16,9 @@ export interface Config {
    */
   zIncrement: number;
   /**
-   * Number of frames for render loop.
+   * Number of frames for render loop (min and max possible).
    */
-  frameLimit: number;
+  frameLimit: [number, number];
 }
 
 export default {
@@ -26,5 +26,5 @@ export default {
   step: 5,
   base: 1000,
   zIncrement: 0.001,
-  frameLimit: 600,
+  frameLimit: [300, 600],
 } as Config;
