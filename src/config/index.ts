@@ -26,5 +26,5 @@ export default {
   step: 5,
   base: 1000,
   zIncrement: 0.001,
-  frameLimit: 5000,
+  frameLimit: 600,
 } as Config;

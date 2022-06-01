@@ -73,7 +73,6 @@ function setParticle(p: Particle): void {
 /** Update function */
 function rerender(): void {
   if ($frames > config.frameLimit) {
-    $frames = 0;
     return void 0;
   }
 
